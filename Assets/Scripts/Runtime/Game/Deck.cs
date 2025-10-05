@@ -39,7 +39,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             }
             return shuffledCards;
         }
-        //Changed to protected so child can asked for shuffles
+
         protected void Shuffle()
         {
             int n = cardsInZone.Count;

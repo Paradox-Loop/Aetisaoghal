@@ -5,11 +5,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 {
     public class MainDeck : Deck
     {
-        //// Start is called once before the first execution of Update after the MonoBehaviour is created
-        //void Start()
-        //{
-
-        //}
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            counter = 0;
+        }
 
         //// Update is called once per frame
         //void Update()
@@ -31,7 +31,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 cardsInZone.Remove(top);
                 return top;
             }
-
+            counter++;
             return null;
         }
 
@@ -54,7 +54,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             return new List<Card>();
         }
 
-        //Changed to return a list of the milled cards
+        public List<Card> Seek(CardSubType subType)
+        { 
+                return new List<Card>(); 
+        }
+
+        public List<Card> Search(CardSubType subType)
+        { 
+            return new List<Card>(); 
+        }
+
         public List<Card> Mill(int amount)
         {
             List<Card> milledCards = new List<Card>();
