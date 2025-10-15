@@ -1,4 +1,3 @@
-using Codice.Client.Common.GameUI;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +15,6 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             if (rng == null) { rng = new System.Random(); }
             Shuffle(); // shuffle all decks when they are created at game start
         }
-
-        //// Update is called once per frame
-        //void Update()
-        //{
-
-        //}
 
         public abstract Card Draw();
 
