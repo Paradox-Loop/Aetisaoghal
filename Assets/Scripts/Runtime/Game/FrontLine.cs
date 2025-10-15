@@ -2,18 +2,8 @@ using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class FrontLiune : Zone
+    public class FrontLine : Zone
     {
-        //// Start is called once before the first execution of Update after the MonoBehaviour is created
-        //void Start()
-        //{
-        
-        //}
 
-        //// Update is called once per frame
-        //void Update()
-        //{
-        
-        //}
     }
 }

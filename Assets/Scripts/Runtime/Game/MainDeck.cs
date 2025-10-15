@@ -11,12 +11,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             counter = 0;
         }
 
-        //// Update is called once per frame
-        //void Update()
-        //{
-
-        //}
-        //Could be removed because same as list.Count
+        //Could be removed because same as list.Count -> Used for damage when library empty
         private int counter;
 
         public int Counter { get { return counter; }
@@ -42,24 +37,24 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             return peekedCards;
         }
 
-        public Card Seek(CardType cardTyoe)
+        public Card Seek(EnumLibrary.CardTypes cardType)
         {
             //TODO returns dummy
             return new Card();
         }
 
-        public List<Card> Search(CardType cardType)
+        public List<Card> Search(EnumLibrary.CardTypes cardType)
         {
             //TODO returns dummy
             return new List<Card>();
         }
 
-        public List<Card> Seek(CardSubType subType)
+        public List<Card> Seek(EnumLibrary.CardSubtypes subType)
         { 
                 return new List<Card>(); 
         }
 
-        public List<Card> Search(CardSubType subType)
+        public List<Card> Search(EnumLibrary.CardSubtypes subType)
         { 
             return new List<Card>(); 
         }
