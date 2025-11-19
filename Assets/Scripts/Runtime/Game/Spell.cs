@@ -9,7 +9,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             foreach(Effect effect in effects)
             {
-                effect.Activate(this.rank, new List<GameObject> { this.gameObject });
+                effect.ActivateTrigger(this.rank, new List<GameObject> { this.gameObject });
             }
         }
 

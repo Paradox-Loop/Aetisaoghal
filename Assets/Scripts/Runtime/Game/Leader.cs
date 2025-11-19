@@ -34,7 +34,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             if (canLevelUp())
             {
-                levelEffects[level].Activate(this.rank, new List<GameObject> {this.gameObject});
+                levelEffects[level].ActivateTrigger(this.rank, new List<GameObject> {this.gameObject});
                 //To-Do Remove ressource to player equal to level cost
                 level += 1;
             }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
@@ -55,15 +56,12 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void CheckTrigger(Effect trigger)
         {
-            if(triggers.Contains(trigger))
-            {
-                ActivateTrigger(trigger);
-            }
+            
         }
 
-        void ActivateTrigger(Effect trigger)
+        void ActivateTrigger(Effect trigger, EnumLibrary.Ranks rank, List<GameObject> targets)
         {
-            trigger.ActivateTrigger();
+            trigger.ActivateTrigger(rank, targets);
         } 
     }
 }

@@ -28,7 +28,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         void DoEffect(Effect effect)
         {
             //TO-DO : replace with actual targeting target itself for now
-            effect.Activate(rank, new List<GameObject> {gameObject});
+            effect.ActivateTrigger(rank, new List<GameObject> {gameObject});
         }
 
         public virtual void RankUp() { }
