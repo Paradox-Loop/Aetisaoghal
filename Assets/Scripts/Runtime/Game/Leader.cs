@@ -1,14 +1,18 @@
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class Unit : Card, ICombatEntity
+    public class Leader : Card, ICombatEntity
     {
-        public bool isToken;
-        public int activeCost;
-        public EnumLibrary.Ressources activeRessource;
+        public int level;
+        public int commandCost;
+        public EnumLibrary.Ressources commandRessource;
+        public string proficiency; //To-Do change when proficiency are added
+        public List<int> levelCost;
+        public EnumLibrary.Ressources levelRessource;
+        public List<Effect> levelEffects;
+        private bool hasLeveled;
 
         public int power { get; set; }
         public int maxHP { get; set; }
@@ -16,9 +20,24 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public bool isExhausted { get; set; }
         public List<Keywords> keywords { get; set; }
 
-        public void ActivateAbility(int cost, EnumLibrary.Ressources ressource, bool exhaust)
+        public void ActivateCommand(int cost, EnumLibrary.Ressources ressource, bool exhaust)
         {
 
+        }
+
+        public bool canLevelUp()
+        {
+            return !hasLeveled;
+        }
+
+        public void LevelUp()
+        {
+            if (canLevelUp())
+            {
+                levelEffects[level].Activate(this.rank, new List<GameObject> {this.gameObject});
+                //To-Do Remove ressource to player equal to level cost
+                level += 1;
+            }
         }
 
         public void Attack(ICombatEntity target)
@@ -32,21 +51,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             throw new System.NotImplementedException();
         }
 
-        public void Destroy()
-        {
-            //TODO Sent to gravayard
-        }
-
         public void Die()
         {
-            throw new System.NotImplementedException();
+            //TODO Sent to gravayard
         }
 
         public void Heal(int amount)
         {
             currentHP += amount;
-            if (currentHP >= maxHP) 
-            { 
+            if (currentHP >= maxHP)
+            {
                 currentHP = maxHP;
             }
         }
@@ -54,13 +68,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public void TakeDamage(int amount)
         {
             currentHP -= amount;
-            if(currentHP <= 0)
+            if (currentHP <= 0)
             {
                 Die();
             }
         }
 
-        public override void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP, 
+        public override void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP,
             List<Effect> newEffects, List<Keywords> newKeywords)
         {
             base.RankUp(newRank, newPower, newMaxHP, newEffects, newKeywords);

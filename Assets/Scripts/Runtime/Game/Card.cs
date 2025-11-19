@@ -30,5 +30,20 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             //TO-DO : replace with actual targeting target itself for now
             effect.Activate(rank, new List<GameObject> {gameObject});
         }
+
+        public virtual void RankUp() { }
+
+        public virtual void RankUp(EnumLibrary.Ranks newRank, List<Effect> newEffects)
+        {
+            rank = newRank;
+            effects = newEffects;
+        }
+
+        public virtual void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP, 
+            List<Effect> newEffects, List<Keywords> newKeywords)
+        {
+            rank = newRank;
+            effects = newEffects;
+        }
     }
 }
