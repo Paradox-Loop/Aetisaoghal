@@ -60,7 +60,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void HealingTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach (GameObject target in targets)
+                {
+                    target.GetComponent<ICombatEntity>().Heal(amount);
+                }
             }
         }
 
@@ -86,7 +89,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void DamageTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach (GameObject target in targets)
+                {
+                    target.GetComponent<ICombatEntity>().TakeDamage(amount);
+                }
             }
         }
 
@@ -114,7 +120,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void BuffTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach(GameObject target in targets)
+                {
+                    target.GetComponent<ICombatEntity>().power += power;
+                    target.GetComponent<ICombatEntity>().maxHP += hp;
+                    target.GetComponent<ICombatEntity>().currentHP += hp;
+                    target.GetComponent<ICombatEntity>().keywords.AddRange(keywords);
+                }
             }
         }
 
@@ -142,7 +154,20 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void DebuffTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach (GameObject target in targets)
+                {
+                    target.GetComponent<ICombatEntity>().power -= power;
+                    target.GetComponent<ICombatEntity>().maxHP -= hp;
+                    target.GetComponent<ICombatEntity>().currentHP -= hp;
+                    target.GetComponent<ICombatEntity>().keywords.ForEach(delegate (Keywords k)
+                    {
+                        if (keywords.Contains(k))
+                        {
+                            target.GetComponent<ICombatEntity>().keywords.Remove(k);
+                        }
+                        
+                    });
+                }
             }
         }
 
@@ -168,7 +193,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void DrawTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach(GameObject target in targets)
+                {
+                    target.GetComponent<Deck>().Draw();
+                }
             }
         }
 
@@ -194,7 +222,15 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void DiscardTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-
+                foreach (GameObject target in targets)
+                {
+                    if (target.GetComponent<Hand>().GetCardsInZone().Count == 0) continue;
+                    for(int i = 0; i < amount; i++)
+                    {
+                        var cardToDiscard = Random.Range(0, target.GetComponent<Hand>().GetCardsInZone().Count);
+                        target.GetComponent<Hand>().Discard(target.GetComponent<Hand>().GetCardsInZone()[cardToDiscard]);
+                    }
+                }
             }
         }
     }
