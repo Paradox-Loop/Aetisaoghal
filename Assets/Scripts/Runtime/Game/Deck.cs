@@ -36,13 +36,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         protected void Shuffle()
         {
             int n = cardsInZone.Count;
-            while (n > 1)
+            for (int i = 0; i < n; i++)
             {
-                n--;
-                int k = rng.Next(n + 1);
-                Card card = cardsInZone[k];
-                cardsInZone[k] = cardsInZone[n];
-                cardsInZone[n] = card;
+                {
+                    int k = rng.Next(n + 1);
+                    Card card = cardsInZone[k];
+                    cardsInZone[k] = cardsInZone[n];
+                    cardsInZone[n] = card;
+                }
             }
         }
     }
