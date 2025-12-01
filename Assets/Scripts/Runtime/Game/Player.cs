@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEditor.Experimental.GraphView;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
@@ -17,6 +18,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfTokenCreatedRoundStart = 1;
         private List<Zone> controlledZones;
         private Leader leader;
+        private List<Ressource> possecedResources;
 
 
 
@@ -27,6 +29,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private const float TIME_LIMIT = 10;
         private float turnStart;
         private bool warning = false;
+
+        //list of events triggered by a player
+        UnityEvent playerLevelUp;
+        UnityEvent playerDefeated;
+        UnityEvent playerPassTurn;
 
         [ClientRpc]
         internal void OnClientPrepareGameClientRpc()
@@ -78,6 +85,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             GameApplication.Instance.Broadcast(new EndMatchEvent(this));
         }
         // code by Mark-Olivier
+
+        private void Start()
+        {
+            playerDefeated = new UnityEvent();
+            playerPassTurn = new UnityEvent();
+            playerLevelUp = new UnityEvent();
+
+        }
         public void Update()
         {
             if (Time.time == turnStart + TIME_LIMIT)
@@ -96,14 +111,19 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         }
         public void Forfeit() // call when a player forfeits the game
         {
-            //call events.defeat(this)?
-            CustomEvents.PlayerDefeated(this);
+            //Need way to specify which player is defeated
+            playerDefeated.Invoke();
+        }
+
+        public void LevelUp()
+        {
+            playerLevelUp.Invoke();
         }
 
         public void Pass() //called when a player pass turn, skipping his action and getting ready to end current round
         {
             // How can I notify the GameMode
-            CustomEvents.PlayerPass(this);
+            playerPassTurn.Invoke();
         }
 
         public void TakeTurn() // call when this player may take an action of pass

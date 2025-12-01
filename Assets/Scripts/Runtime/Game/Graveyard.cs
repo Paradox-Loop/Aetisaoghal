@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,6 +9,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public bool HitTest(Vector2 localPoint)
         {
             throw new System.NotImplementedException();
+        }
+
+        public override List<Card> GetCardsInZone()
+        {
+            return cardsInZone;
         }
 
         public bool IsSelectable()

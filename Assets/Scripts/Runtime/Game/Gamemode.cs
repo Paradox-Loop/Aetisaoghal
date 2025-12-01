@@ -75,7 +75,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         }
 
-        private void DoTrigger(List<Triggers> t)
+        private void DoTrigger()
         {
 
         }
