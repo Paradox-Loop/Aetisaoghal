@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class ManaZone : Deck
+    public class ManaZone : Zone
     {
-        public override Card Draw()
+
+        public override List<Card> GetCardsInZone()
         {
-            throw new System.NotImplementedException();
+            return cardsInZone;
         }
     }
 }

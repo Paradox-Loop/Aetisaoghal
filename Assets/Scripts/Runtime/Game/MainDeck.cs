@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Template.Multiplayer.NGO.Runtime.EnumLibrary;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
@@ -45,18 +46,50 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public List<Card> Search(EnumLibrary.CardTypes cardType)
         {
-            //TODO returns dummy
-            return new List<Card>();
+            //Get all cards from deck that are of the specified time.
+            List<Card> available = new List<Card>();
+            foreach (Card card in cardsInZone)
+            {
+                if (card.GetType().Equals(cardType))
+                {
+                    available.Add(card);
+                }
+            }
+            return available;
         }
 
         public List<Card> Seek(EnumLibrary.CardSubtypes subType)
-        { 
-                return new List<Card>(); 
+        {
+            List<Card> find = new List<Card>();
+            foreach (var card in cardsInZone)
+            {
+                if (card.subType.Equals(subType))
+                {
+                    find.Add(card);
+                }
+            }
+
+            if (find.Count > 0)
+            {
+                return find;
+            }
+            else
+            {
+                return null; //return null if no sutable cards where found. Must make sure to handle it.
+            }
         }
 
         public List<Card> Search(EnumLibrary.CardSubtypes subType)
-        { 
-            return new List<Card>(); 
+        {
+            List<Card> available = new List<Card>();
+            foreach (Card card in cardsInZone)
+            {
+                if (card.GetType().Equals(subType))
+                {
+                    available.Add(card);
+                }
+            }
+            return available;
         }
 
         public List<Card> Mill(int amount)

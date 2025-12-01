@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UIElements.Image;
 
@@ -12,7 +11,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public EnumLibrary.CardTypes cardType;
         public EnumLibrary.CardSubtypes subType;
         public int cost;
-        public string cardName;
+        public string name;
         public EnumLibrary.Ranks rank;
         public List<Effect> effects;
         public Zone currentZone;
@@ -22,7 +21,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         
         public void Play()
         {
-            
+        
         }
 
         void DoEffect(Effect effect)

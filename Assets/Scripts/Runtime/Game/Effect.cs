@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class Effect : NetworkBehaviour
+    public class Effect : MonoBehaviour
     {
         public virtual void AddEffect() { }
         public virtual void RemoveEffect() { }
