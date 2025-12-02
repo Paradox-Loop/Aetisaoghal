@@ -13,7 +13,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfTokenCreatedRoundStart = 1;
         private List<Zone> controlledZones;
         private Leader leader;
-        private Dictionary<EnumLibrary.Ressources, int> possessedResources =
+        public Dictionary<EnumLibrary.Ressources, int> possessedResources =
             new Dictionary<EnumLibrary.Ressources, int>()
             {
                 {EnumLibrary.Ressources.Mana, 0},

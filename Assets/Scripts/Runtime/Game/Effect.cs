@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class Effect : MonoBehaviour
+    public class Effect : NetworkBehaviour
     {
         public virtual void AddEffect() { }
         public virtual void RemoveEffect() { }
@@ -34,7 +34,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             void RessourceTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                
+                foreach (GameObject target in targets)
+                {
+                    if (target.GetComponent<Player>())
+                    {
+                        target.GetComponent<Player>().possessedResources[type] += amount;
+                    }
+                }
             }
         }
 
