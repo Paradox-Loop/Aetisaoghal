@@ -1,13 +1,8 @@
-using NUnit.Framework;
-using System.IO;
 using Unity.Netcode;
 using UnityEngine;
 using System.Collections.Generic;
-
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEditor.Experimental.GraphView;
-using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
@@ -18,12 +13,9 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfTokenCreatedRoundStart = 1;
         private List<Zone> controlledZones;
         private Leader leader;
-        private List<Ressource> possecedResources;
-
-
+        private List<Ressource> possessedResources;
 
         Gamemode gamemode;
-
 
         // vars related to the player's turn time limit
         private const float TIME_LIMIT = 10;
@@ -146,11 +138,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             
         }
 
-        public void Select(ISelectable selection)
+        public void Select(Selectable selection)
         {
             if(gamemode.CheckLegalAction())
             {
-                selection.Select(new UnityEngine.UIElements.VisualElement(), false);
+                selection.Select();
             }
         }
 
