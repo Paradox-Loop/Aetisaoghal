@@ -31,7 +31,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         //list of events triggered by a player
         UnityEvent playerLevelUp;
-        UnityEvent playerDefeated;
+        UnityEvent<Player> playerDefeated;
         UnityEvent playerPassTurn;
 
         [ClientRpc]
@@ -87,7 +87,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         private void Start()
         {
-            playerDefeated = new UnityEvent();
+            playerDefeated = new UnityEvent<Player>();
             playerPassTurn = new UnityEvent();
             playerLevelUp = new UnityEvent();
 
@@ -111,7 +111,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public void Forfeit() // call when a player forfeits the game
         {
             //Need way to specify which player is defeated
-            playerDefeated.Invoke();
+            playerDefeated.Invoke(this);
         }
 
         public void LevelUp()
