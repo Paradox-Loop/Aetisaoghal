@@ -13,7 +13,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfTokenCreatedRoundStart = 1;
         private List<Zone> controlledZones;
         private Leader leader;
-        private List<Ressource> possessedResources;
+        private Dictionary<EnumLibrary.Ressources, int> possessedResources =
+            new Dictionary<EnumLibrary.Ressources, int>()
+            {
+                {EnumLibrary.Ressources.Mana, 0},
+                {EnumLibrary.Ressources.ArcaneKnowledge, 0},
+                {EnumLibrary.Ressources.Loot, 0},
+                {EnumLibrary.Ressources.Food, 0}
+            };
 
         Gamemode gamemode;
 
