@@ -1,19 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    public class ManaZone : Deck
+    public class ManaZone : Zone
     {
-        //// Start is called once before the first execution of Update after the MonoBehaviour is created
-        //void Start()
-        //{
-        
-        //}
 
-        //// Update is called once per frame
-        //void Update()
-        //{
-        
-        //}
+        public override List<Card> GetCardsInZone()
+        {
+            return cardsInZone;
+        }
     }
 }

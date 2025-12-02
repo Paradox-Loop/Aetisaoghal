@@ -35,5 +35,15 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             Veteran,
             Elite
         }
+
+        public enum Ressources
+        {
+            Mana,
+            Token,
+            Card,
+            Food,
+            ArcaneKnowledge,
+            Loot
+        }
     }
 }
