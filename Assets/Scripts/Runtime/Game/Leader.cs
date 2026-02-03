@@ -34,7 +34,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             if (canLevelUp())
             {
-                levelEffects[level].ActivateTrigger(this.rank, new List<GameObject> {this.gameObject});
+                levelEffects[level].ActivateEffect(this.rank, new List<GameObject> {this.gameObject});
                 //To-Do Remove ressource to player equal to level cost
                 level += 1;
             }
@@ -75,9 +75,9 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         }
 
         public override void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP,
-            List<Effect> newEffects, List<Keywords> newKeywords)
+            List<Effect> newEffects, List<Trigger> newTriggers, List<Keywords> newKeywords)
         {
-            base.RankUp(newRank, newPower, newMaxHP, newEffects, newKeywords);
+            base.RankUp(newRank, newPower, newMaxHP, newEffects, newTriggers, newKeywords);
             keywords = newKeywords;
         }
     }

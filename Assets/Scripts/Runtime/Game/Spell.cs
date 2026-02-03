@@ -9,13 +9,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             foreach(Effect effect in effects)
             {
-                effect.ActivateTrigger(this.rank, new List<GameObject> { this.gameObject });
+                effect.ActivateEffect(this.rank, new List<GameObject> { this.gameObject });
             }
         }
 
-        public override void RankUp(EnumLibrary.Ranks newRank, List<Effect> newEffects)
+        public override void RankUp(EnumLibrary.Ranks newRank, List<Effect> newEffects, 
+            List<Trigger> newTriggers)
         {
-            base.RankUp(newRank, newEffects);
+            base.RankUp(newRank, newEffects, newTriggers);
         }
     }
 }

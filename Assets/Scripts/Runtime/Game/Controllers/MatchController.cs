@@ -8,7 +8,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
     internal class MatchController : Controller<GameApplication>
     {
         MatchView View => App.View.Match;
-        public List<Effect> triggers;
+        public List<Card> cardWithTriggers;
 
         void Awake()
         {
@@ -26,9 +26,12 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             RemoveListener<CountdownChangedEvent>(OnCountdownChanged);
             RemoveListener<WinButtonClickedEvent>(OnClientWinButtonClicked);
 
-            foreach (var trigger in triggers)
+            foreach (var card in cardWithTriggers)
             {
-                trigger.RemoveEffect();
+                foreach(var trigger in card.triggers)
+                {
+                    trigger.DeleteTrigger();
+                }
             }
         }
 
@@ -42,26 +45,30 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<Player>().OnPlayerAskedToWinServerRpc();
         }
 
-        public void AddTrigger(Effect trigger)
+        public void AddCardWithTrigger(Card card)
         {
-            triggers.Add(trigger);
-            trigger.AddEffect();
+            cardWithTriggers.Add(card);
         }
 
-        public void RemoveTrigger(Effect trigger)
+        public void RemoveCardWithTrigger(Card card)
         {
-            triggers.Remove(trigger);
-            trigger.RemoveEffect();
+            cardWithTriggers.Remove(card);
         }
 
-        public void CheckTrigger(Effect trigger)
+        public void CheckTriggers()
         {
-            
+            foreach (var card in cardWithTriggers)
+            {
+                foreach (var trigger in card.triggers)
+                {
+                    ActivateTrigger(card, trigger, new List<GameObject> {card.gameObject});
+                }
+            }  
         }
 
-        void ActivateTrigger(Effect trigger, EnumLibrary.Ranks rank, List<GameObject> targets)
+        void ActivateTrigger(Card card, Trigger trigger, List<GameObject> targets)
         {
-            trigger.ActivateTrigger(rank, targets);
+            card.DoTrigger(trigger, targets);
         } 
     }
 }
