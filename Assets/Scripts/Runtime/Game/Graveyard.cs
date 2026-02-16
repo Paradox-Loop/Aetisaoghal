@@ -6,6 +6,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 {
     public abstract class Graveyard : Zone, UnityEditor.Experimental.GraphView.ISelectable
     {
+        void Start()
+        {
+            validCardTypes = new List<EnumLibrary.CardTypes> { EnumLibrary.CardTypes.Spell, EnumLibrary.CardTypes.Unit };
+        }
         public bool HitTest(Vector2 localPoint)
         {
             throw new System.NotImplementedException();
