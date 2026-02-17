@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -1920
-    y: 43
+    x: -1912
+    y: 51
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Test Runner
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
+  m_Maximized: 0
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 99
+  controlID: 96
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -140,12 +140,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1528
+    width: 1366
     height: 933
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 46
+  controlID: 16
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -157,21 +157,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1528
+    x: 1366
     y: 0
-    width: 392
+    width: 554
     height: 933
-  m_MinSize: {x: 276, y: 76}
+  m_MinSize: {x: 51, y: 76}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 12}
   m_Panes:
+  - {fileID: 13}
   - {fileID: 12}
-  m_Selected: 0
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -190,14 +191,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1528
+    width: 1366
     height: 684
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 16}
   m_Panes:
+  - {fileID: 16}
   - {fileID: 15}
-  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &9
@@ -219,12 +220,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 684
-    width: 1528
+    width: 1366
     height: 249
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 47
+  controlID: 26
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -243,13 +244,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 289
+    width: 246
     height: 249
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &11
@@ -267,18 +268,871 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 289
+    x: 246
     y: 0
-    width: 1239
+    width: 1120
     height: 249
   m_MinSize: {x: 232, y: 276}
   m_MaxSize: {x: 10002, y: 10026}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 13}
+  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: Test framework for running Edit mode and Play mode tests in Unity.
+      Part of the com.unity.test-framework package.
+    m_TextWithWhitespace: "Test Runner\u200B"
+  m_Pos:
+    serializedVersion: 2
+    x: -546
+    y: 87
+    width: 553
+    height: 907
+  m_SerializedDataModeController:
+    m_DataMode: 0
+    m_PreferredDataMode: 0
+    m_SupportedDataModes: 
+    isAutomatic: 1
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_ContainerData: []
+    m_OverlaysVisible: 1
+  m_Spl:
+    ID: 144
+    splitterInitialOffset: 401
+    currentActiveSplitter: -1
+    realSizes:
+    - 360
+    - 477
+    relativeSizes:
+    - 0.42979243
+    - 0.5702076
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 837
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 0
+  m_TestListGUIs:
+  - m_Window: {fileID: 12}
+    runProgress:
+      RunGuid: 0543e04c-bb63-49ed-9275-3b9b41b95a6c
+      ExecutionSettings:
+        m_TargetPlatform: 0
+        m_HasTargetPlatform: 0
+        filter:
+          testMode: 0
+          testNames: []
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        filters:
+        - testMode: 1
+          testNames:
+          - Unity.Template.Multiplayer.NGO.Runtime.DeckTests.ShuffleTest
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        runSynchronously: 0
+        playerHeartbeatTimeout: 600
+        orderedTestNames: []
+        ignoreTests: []
+        featureFlags:
+          fileCleanUpCheck: 0
+          requiresSplashScreen: 0
+          strictDomainReload: 0
+          disableNestedEnumeratorBugfix: 0
+        randomOrderSeed: 0
+      HasFinished: 1
+      Progress: 0.9999999
+      CurrentStepName: Unlock Reload Assemblies
+      CurrentStageName: 
+    m_NewResultList:
+    - id: 1000
+      uniqueId: '[Aetisaoghal][suite]'
+      name: Aetisaoghal
+      fullName: Aetisaoghal
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1009
+      uniqueId: '[Tests1.dll][suite]'
+      name: Tests1.dll
+      fullName: C:/GIT/Aetisaoghal/Library/ScriptAssemblies/Tests1.dll
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1019
+      parentUniqueId: '[Aetisaoghal][suite]'
+    - id: 1010
+      uniqueId: 'Tests1.dll/[Unity][suite]'
+      name: Unity
+      fullName: Unity
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1009
+      parentUniqueId: '[Tests1.dll][suite]'
+    - id: 1011
+      uniqueId: 'Tests1.dll/Unity/[Template][suite]'
+      name: Template
+      fullName: Unity.Template
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1010
+      parentUniqueId: 'Tests1.dll/[Unity][suite]'
+    - id: 1012
+      uniqueId: 'Tests1.dll/Unity/Template/[Multiplayer][suite]'
+      name: Multiplayer
+      fullName: Unity.Template.Multiplayer
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1011
+      parentUniqueId: 'Tests1.dll/Unity/[Template][suite]'
+    - id: 1013
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/[NGO][suite]'
+      name: NGO
+      fullName: Unity.Template.Multiplayer.NGO
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1012
+      parentUniqueId: 'Tests1.dll/Unity/Template/[Multiplayer][suite]'
+    - id: 1014
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/[Tests1][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+      name: Runtime
+      fullName: Unity.Template.Multiplayer.NGO.Runtime
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1013
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/[NGO][suite]'
+    - id: 1002
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+      name: DeckTests
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests
+      resultStatus: 1
+      duration: 65.9853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/[Tests1][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+    - id: 1008
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.AddIllegalCard]'
+      name: AddIllegalCard
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.AddIllegalCard
+      resultStatus: 1
+      duration: 5.5116787
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    - id: 1004
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SearchFoundTest]'
+      name: SearchFoundTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SearchFoundTest
+      resultStatus: 1
+      duration: 60.32577
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    - id: 1005
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SearchNoFindTest]'
+      name: SearchNoFindTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SearchNoFindTest
+      resultStatus: 1
+      duration: 0.0403913
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    - id: 1006
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SeekTestEqual]'
+      name: SeekTestEqual
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SeekTestEqual
+      resultStatus: 1
+      duration: 0.0449322
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    - id: 1007
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SeekTestNotEqual]'
+      name: SeekTestNotEqual
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.SeekTestNotEqual
+      resultStatus: 1
+      duration: 0.057557
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    - id: 1003
+      uniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/DeckTests/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests.ShuffleTest]'
+      name: ShuffleTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.DeckTests.ShuffleTest
+      resultStatus: 1
+      duration: 0.0049686
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1002
+      parentUniqueId: 'Tests1.dll/Unity/Template/Multiplayer/NGO/Runtime/[Tests1][Unity.Template.Multiplayer.NGO.Runtime.DeckTests][suite]'
+    m_ResultText: ShuffleTest (0,005s)
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 1a87809f
+      m_LastClickedID: -1618966758
+      m_ExpandedIDs: 242c1090ba4c0692e64c439be2abe5d306330bd683304bfaebb0e060e1fd1575ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_TrimLeadingAndTrailingWhitespace: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategories: []
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  - m_Window: {fileID: 12}
+    runProgress:
+      RunGuid: 0543e04c-bb63-49ed-9275-3b9b41b95a6c
+      ExecutionSettings:
+        m_TargetPlatform: 0
+        m_HasTargetPlatform: 0
+        filter:
+          testMode: 0
+          testNames: []
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        filters:
+        - testMode: 1
+          testNames:
+          - Unity.Template.Multiplayer.NGO.Runtime.DeckTests.ShuffleTest
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        runSynchronously: 0
+        playerHeartbeatTimeout: 600
+        orderedTestNames: []
+        ignoreTests: []
+        featureFlags:
+          fileCleanUpCheck: 0
+          requiresSplashScreen: 0
+          strictDomainReload: 0
+          disableNestedEnumeratorBugfix: 0
+        randomOrderSeed: 0
+      HasFinished: 1
+      Progress: 0.9999999
+      CurrentStepName: Unlock Reload Assemblies
+      CurrentStageName: 
+    m_NewResultList:
+    - id: 1022
+      uniqueId: '[Aetisaoghal][suite]'
+      name: Aetisaoghal
+      fullName: Aetisaoghal
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1027
+      uniqueId: '[com.unity.template.multiplayer-ngo.runtime.dll][suite]'
+      name: com.unity.template.multiplayer-ngo.runtime.dll
+      fullName: C:/GIT/Aetisaoghal/Library/ScriptAssemblies/com.unity.template.multiplayer-ngo.runtime.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1022
+      parentUniqueId: '[Aetisaoghal][suite]'
+    - id: 1028
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/[Unity][suite]'
+      name: Unity
+      fullName: Unity
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1027
+      parentUniqueId: '[com.unity.template.multiplayer-ngo.runtime.dll][suite]'
+    - id: 1029
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/[Template][suite]'
+      name: Template
+      fullName: Unity.Template
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1028
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/[Unity][suite]'
+    - id: 1030
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/[Multiplayer][suite]'
+      name: Multiplayer
+      fullName: Unity.Template.Multiplayer
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1029
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/[Template][suite]'
+    - id: 1031
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/[NGO][suite]'
+      name: NGO
+      fullName: Unity.Template.Multiplayer.NGO
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1030
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/[Multiplayer][suite]'
+    - id: 1032
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+      name: Runtime
+      fullName: Unity.Template.Multiplayer.NGO.Runtime
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1031
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/[NGO][suite]'
+    - id: 1023
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck][suite]'
+      name: MainDeck
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.MainDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1032
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+    - id: 1024
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/MainDeck/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck.ShuffleTest]'
+      name: ShuffleTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.MainDeck.ShuffleTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1023
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck][suite]'
+    - id: 1025
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck][suite]'
+      name: ManaDeck
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.ManaDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1032
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+    - id: 1026
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/ManaDeck/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck.ShuffleTest]'
+      name: ShuffleTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.ManaDeck.ShuffleTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1025
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck][suite]'
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: e2abe5d3
+      m_LastClickedID: -739922974
+      m_ExpandedIDs: e2abe5d3ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_TrimLeadingAndTrailingWhitespace: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategories: []
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  - m_Window: {fileID: 12}
+    runProgress:
+      RunGuid: 0543e04c-bb63-49ed-9275-3b9b41b95a6c
+      ExecutionSettings:
+        m_TargetPlatform: 0
+        m_HasTargetPlatform: 0
+        filter:
+          testMode: 0
+          testNames: []
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        filters:
+        - testMode: 1
+          testNames:
+          - Unity.Template.Multiplayer.NGO.Runtime.DeckTests.ShuffleTest
+          groupNames: []
+          categoryNames: []
+          assemblyNames: []
+        runSynchronously: 0
+        playerHeartbeatTimeout: 600
+        orderedTestNames: []
+        ignoreTests: []
+        featureFlags:
+          fileCleanUpCheck: 0
+          requiresSplashScreen: 0
+          strictDomainReload: 0
+          disableNestedEnumeratorBugfix: 0
+        randomOrderSeed: 0
+      HasFinished: 1
+      Progress: 0.9999999
+      CurrentStepName: Unlock Reload Assemblies
+      CurrentStageName: 
+    m_NewResultList:
+    - id: 1021
+      uniqueId: '[Aetisaoghal][suite]'
+      name: Aetisaoghal
+      fullName: Aetisaoghal
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1026
+      uniqueId: '[com.unity.template.multiplayer-ngo.runtime.dll][suite]'
+      name: com.unity.template.multiplayer-ngo.runtime.dll
+      fullName: C:/GIT/Aetisaoghal/Library/ScriptAssemblies/com.unity.template.multiplayer-ngo.runtime.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1038
+      parentUniqueId: '[Aetisaoghal][suite]'
+    - id: 1027
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/[Unity][suite]'
+      name: Unity
+      fullName: Unity
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1026
+      parentUniqueId: '[com.unity.template.multiplayer-ngo.runtime.dll][suite]'
+    - id: 1028
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/[Template][suite]'
+      name: Template
+      fullName: Unity.Template
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1027
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/[Unity][suite]'
+    - id: 1029
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/[Multiplayer][suite]'
+      name: Multiplayer
+      fullName: Unity.Template.Multiplayer
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1028
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/[Template][suite]'
+    - id: 1030
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/[NGO][suite]'
+      name: NGO
+      fullName: Unity.Template.Multiplayer.NGO
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1029
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/[Multiplayer][suite]'
+    - id: 1031
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+      name: Runtime
+      fullName: Unity.Template.Multiplayer.NGO.Runtime
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1030
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/[NGO][suite]'
+    - id: 1022
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck][suite]'
+      name: MainDeck
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.MainDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1031
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+    - id: 1023
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/MainDeck/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck.ShuffleTest]'
+      name: ShuffleTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.MainDeck.ShuffleTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1022
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.MainDeck][suite]'
+    - id: 1024
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck][suite]'
+      name: ManaDeck
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.ManaDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1031
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime][suite]'
+    - id: 1025
+      uniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/ManaDeck/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck.ShuffleTest]'
+      name: ShuffleTest
+      fullName: Unity.Template.Multiplayer.NGO.Runtime.ManaDeck.ShuffleTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: 'com.unity.template.multiplayer-ngo.runtime.dll/Unity/Template/Multiplayer/NGO/Runtime/[com.unity.template.multiplayer-ngo.runtime][Unity.Template.Multiplayer.NGO.Runtime.ManaDeck][suite]'
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e2abe5d3ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_TrimLeadingAndTrailingWhitespace: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategories: []
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,9 +1153,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1529
-    y: 24
-    width: 391
+    x: -554
+    y: 79
+    width: 553
     height: 907
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -327,7 +1181,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,9 +1202,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 290
-    y: 24
-    width: 1237
+    x: -1666
+    y: 771
+    width: 1118
     height: 223
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -374,7 +1228,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Runtime/Game
+    - Assets/Scripts/Runtime/Game/Tests 1
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -382,18 +1236,18 @@ MonoBehaviour:
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 64
+  m_StartGridSize: 78
   m_LastFolders:
-  - Assets/Scripts/Runtime/Game
+  - Assets/Scripts/Runtime/Game/Tests 1
   m_LastFoldersGridSize: 78
   m_LastProjectPath: C:\GIT\Aetisaoghal
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 175}
-    m_SelectedIDs: 70cc0000
-    m_LastClickedID: 52336
-    m_ExpandedIDs: 00000000eaca0000
+    scrollPos: {x: 0, y: 153}
+    m_SelectedIDs: 3acc0000
+    m_LastClickedID: 52282
+    m_ExpandedIDs: 00000000f0ca0000f2ca0000f4ca0000f6ca000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -422,7 +1276,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000eaca0000
+    m_ExpandedIDs: 00000000f0ca0000f2ca0000f4ca0000f6ca0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -468,7 +1322,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 7}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -476,11 +1330,11 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 15}
-    m_GridSize: 64
+    m_ScrollPosition: {x: 0, y: 0}
+    m_GridSize: 78
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 115
---- !u!114 &14
+  m_DirectoriesAreaWidth: 198
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -503,7 +1357,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1920
     y: 79
-    width: 1775
+    width: 1555
     height: 658
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -522,7 +1376,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1775, y: 637}
+  m_TargetSize: {x: 1555, y: 637}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -537,8 +1391,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -887.5
-    m_HBaseRangeMax: 887.5
+    m_HBaseRangeMin: -777.5
+    m_HBaseRangeMax: 777.5
     m_VBaseRangeMin: -318.5
     m_VBaseRangeMax: 318.5
     m_HAllowExceedBaseRangeMin: 1
@@ -549,7 +1403,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -558,30 +1412,30 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1775
+      width: 1555
       height: 637
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 887.5, y: 318.5}
+    m_Translation: {x: 777.5, y: 318.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -887.5
+      x: -777.5
       y: -318.5
-      width: 1775
+      width: 1555
       height: 637
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1775, y: 658}
+  m_LastWindowPixelSize: {x: 1555, y: 658}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
   m_showToolbar: 1
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,9 +1456,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 24
-    width: 1527
+    x: -1912
+    y: 87
+    width: 1365
     height: 658
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1202,9 +2056,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -2.1205807, y: 0.38886726, z: -0.008540408}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -2.1205807, y: 0.38886726, z: -0.008540408}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1254,9 +2108,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10
+    m_Target: 10.854045
     speed: 2
-    m_Value: 10
+    m_Value: 10.854045
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1277,7 +2131,7 @@ MonoBehaviour:
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_Viewpoint:
-    m_SceneView: {fileID: 15}
+    m_SceneView: {fileID: 16}
     m_CameraOverscanSettings:
       m_Opacity: 50
       m_Scale: 1
@@ -1290,7 +2144,7 @@ MonoBehaviour:
     name: Contributors / Receivers
     section: Lighting
   m_ViewIsLockedToObject: 0
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1311,9 +2165,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 24
-    width: 288
+    x: -1912
+    y: 771
+    width: 245
     height: 223
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1331,7 +2185,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0efbffff
+      m_ExpandedIDs: c87fffffc080ffff7a83ffff7284ffff2e87ffff2688ffffc08affffb88bffff4c8effff448fffffda91ffffcc92ffff6495ffff5696ffff1699ffff089affffd29affffc89bffff929cffff849dffff44a0ffff36a1ffff00a2fffff2a2ffffbca3ffffaea4ffff78a5ffff6aa6ffff34a7ffff2ca8ffff1cadffff14aeffffceb0ffffc6b1ffff80b4ffff78b5ffff42b6ffff3ab7fffff8b9fffff0baffffaebdffffa6beffff70bfffff68c0ffff32c1ffff2ac2ffffe4c4ffffdcc5ffffbac8ffffb2c9ffff48ccffff40cdfffffccffffff4d0ffffb0d3ffffa8d4ffff72d5ffff6ad6ffff32d7ffff28d8fffff0daffffe8dbffff6ee0ffff66e1ffff22e4ffff1ae5ffffaee7ffffa6e8ffff3cebffff34ecffffeeeeffffe6efffffb2f0ffffacf1ffff0efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

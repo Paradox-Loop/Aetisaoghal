@@ -6,6 +6,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 {
     public class Hand : Zone
     {
+        public override void AddCardsToZone(List<Card> cards)
+        {
+            foreach (Card card in cards)
+            {
+                //check if any cards are cards unable to enter this zone 
+                if (card.cardType != EnumLibrary.CardTypes.Unit || card.cardType != EnumLibrary.CardTypes.Spell)
+                {
+                    cards.Remove(card); //remove cards if their types cannot enter this zone
+                }
+            }
+            cardsInZone.AddRange(cards);
+        }
         public void AddCardToHand(Card card)
         {
             // TODO
@@ -18,7 +30,6 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public override List<Card> GetCardsInZone()
         {
-            return new List<Card>();
             //check if player calling is owner before showing hand
             if(true)
             {
