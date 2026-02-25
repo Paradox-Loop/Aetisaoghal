@@ -5,6 +5,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 {
     public class ManaDeck : Deck
     {
+        void Start()
+        {
+            validCardTypes = new List<EnumLibrary.CardTypes> { EnumLibrary.CardTypes.ManaStone };
+
+            if (rng == null) { rng = new System.Random(); }
+            Shuffle(); // shuffle all decks when they are created at game start
+        }
+        
         public override Card Draw()
         {
             if(cardsInZone.Count == 0)
@@ -19,6 +27,5 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             cardsInZone.RemoveAt(0);
             return card;
         }
-
     }
 }
