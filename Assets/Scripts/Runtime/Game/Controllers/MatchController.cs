@@ -14,6 +14,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             AddListener<CountdownChangedEvent>(OnCountdownChanged);
             AddListener<WinButtonClickedEvent>(OnClientWinButtonClicked);
+            Debug.Log("Hello");
         }
 
         void OnDestroy()
@@ -69,6 +70,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         void ActivateTrigger(Card card, Trigger trigger, List<GameObject> targets)
         {
             card.DoTrigger(trigger, targets);
-        } 
+        }
+
+        public Zone GetZone(Card card) {
+            return null;
+        }
     }
 }

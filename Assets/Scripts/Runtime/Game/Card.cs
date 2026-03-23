@@ -16,7 +16,6 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public EnumLibrary.Ranks rank;
         public List<Effect> effects;
         public List<Trigger> triggers;
-        public Zone currentZone;
 
         private Image image;
         private Text text;
