@@ -11,7 +11,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfCardsRoundStart = 1;
         private int nbrOfManaStoneRoundStart = 1;
         private int nbrOfTokenCreatedRoundStart = 1;
-        private List<Zone> controlledZones;
+        public List<Zone> controlledZones;
         private Leader leader;
         public Dictionary<EnumLibrary.Ressources, int> possessedResources =
             new Dictionary<EnumLibrary.Ressources, int>()

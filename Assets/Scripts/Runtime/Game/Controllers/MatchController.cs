@@ -26,7 +26,28 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             AddListener<CountdownChangedEvent>(OnCountdownChanged);
             AddListener<WinButtonClickedEvent>(OnClientWinButtonClicked);
-            Debug.Log("Hello");
+            foreach(Player player in players)
+            {
+                GameObject Hand = new GameObject("Hand", typeof(Hand));
+                player.controlledZones.Add(Hand.GetComponent<Hand>());
+                GameObject MainDeck = new GameObject("MainDeck", typeof(MainDeck));
+                player.controlledZones.Add(MainDeck.GetComponent<MainDeck>());
+                GameObject ManaDeck = new GameObject("ManaDeck", typeof(ManaDeck));
+                player.controlledZones.Add(ManaDeck.GetComponent<ManaDeck>());
+                GameObject ExtraZone = new GameObject("ExtraZone", typeof(ExtraZone));
+                player.controlledZones.Add(ExtraZone.GetComponent<ExtraZone>());
+                GameObject FrontLine = new GameObject("FrontLine", typeof(FrontLine));
+                player.controlledZones.Add(FrontLine.GetComponent<FrontLine>());
+                GameObject BackLine = new GameObject("BackLine", typeof(BackLine));
+                player.controlledZones.Add(BackLine.GetComponent<BackLine>());
+                GameObject ManaZone = new GameObject("ManaZone", typeof(ManaZone));
+                player.controlledZones.Add(ManaZone.GetComponent<ManaZone>());
+                GameObject MainGrave = new GameObject("MainGrave", typeof(MainGrave));
+                player.controlledZones.Add(MainGrave.GetComponent<MainGrave>());
+                GameObject ManaGrave = new GameObject("ManaGrave", typeof(ManaGrave));
+                player.controlledZones.Add(ManaGrave.GetComponent<ManaGrave>());
+                zones.AddRange(player.controlledZones);
+            }
         }
 
         void OnDestroy()
@@ -88,6 +109,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             nbOfPlayers = players.Count;
             startingPlayer = players[Random.Range(0, nbOfPlayers)];
+            currentRound = 0;
             StartRound();
         }
 
@@ -99,6 +121,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private void StartRound()
         {
             playersPassed.Clear();
+            currentRound++;
             activePlayer = startingPlayer;
             CheckTriggers();
         }
