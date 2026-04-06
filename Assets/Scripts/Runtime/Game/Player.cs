@@ -22,7 +22,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 {EnumLibrary.Ressources.Food, 0}
             };
 
-        Gamemode gamemode;
+        MatchController matchController;
 
         // vars related to the player's turn time limit
         private const float TIME_LIMIT = 10;
@@ -138,7 +138,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void PlayCard(Card card) // play the selected card from hand and activate its effects
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             { 
                 card.Play();
             }
@@ -147,7 +147,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void Select(Selectable selection)
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             {
                 selection.Select();
             }
@@ -161,7 +161,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void Attack(ICombatEntity attacker, ICombatEntity target)
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             {
                 attacker.Attack(target);
             }

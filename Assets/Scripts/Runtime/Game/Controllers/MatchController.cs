@@ -9,6 +9,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
     {
         MatchView View => App.View.Match;
         public List<Card> cardWithTriggers;
+        public List<Zone> zones;
+
+        private Player startingPlayer;
+        private Player activePlayer;
+        private List<Player> players;
+        private List<Player> playersPassed;
+        private int nbOfPlayers;
+
+        private int currentRound;
+
+        //Make it it's own class
+        //private State gamestate;
 
         void Awake()
         {
@@ -72,7 +84,73 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             card.DoTrigger(trigger, targets);
         }
 
-        public Zone GetZone(Card card) {
+        private void StartGame()
+        {
+            nbOfPlayers = players.Count;
+            startingPlayer = players[Random.Range(0, nbOfPlayers)];
+            StartRound();
+        }
+
+        private void EndGame(Player player)
+        {
+
+        }
+
+        private void StartRound()
+        {
+            playersPassed.Clear();
+            activePlayer = startingPlayer;
+            CheckTriggers();
+        }
+
+        private void EndRound()
+        {
+            CheckTriggers();
+            if (playersPassed.Count >= nbOfPlayers)
+            {
+                int currentIndex = players.IndexOf(startingPlayer);
+                currentIndex = (currentIndex + 1) % players.Count;
+                startingPlayer = players[currentIndex];
+                playersPassed.Clear();
+            }
+        }
+
+        private void StartTurn()
+        {
+            CheckTriggers();
+            activePlayer.TakeTurn();
+            HighlightPossibleActions();
+        }
+
+        private void EndTurn()
+        {
+            CheckTriggers();
+            int currentIndex = players.IndexOf(activePlayer);
+            currentIndex = (currentIndex + 1) % players.Count;
+            activePlayer = players[currentIndex];
+        }
+
+        private void HighlightPossibleActions()
+        {
+
+        }
+
+        public bool CheckLegalAction()
+        {
+            return true;
+        }
+
+        public Zone GetZone(Card cardToFind) {
+            foreach (Zone zone in zones)
+            {
+                foreach(Card card in zone.GetCardsInZone())
+                {
+                    if(card == cardToFind)
+                    {
+                        return zone;
+                    }
+                }
+            }
             return null;
         }
     }
