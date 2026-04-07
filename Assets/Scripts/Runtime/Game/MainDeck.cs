@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Template.Multiplayer.NGO.Runtime.EnumLibrary;
@@ -10,11 +11,35 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         void Start()
         {
             counter = 0;
+            base.validCardTypes = new List<CardTypes> { CardTypes.Spell, CardTypes.Unit };
+
+            if (Deck.rng == null) { Deck.rng = new System.Random(); }
+            Shuffle(); // shuffle all decks when they are created at game start
+        }
+        private void Update() // making sure start is ran
+        {
+            counter = 0;
+            cardsInZone = new List<Card>(); //ensure the list is initialized
+            validCardTypes = new List<CardTypes> { CardTypes.Spell, CardTypes.Unit };
+
+            if (Deck.rng == null) { Deck.rng = new System.Random(); }
+            Shuffle(); // shuffle all decks when they are created at game start
+        }
+
+        public void StartBypass()
+        {
+            counter = 0;
+            cardsInZone = new List<Card>(); //ensure the list is initialized
+            validCardTypes = new List<CardTypes> { CardTypes.Spell, CardTypes.Unit };
+
+            if (Deck.rng == null) { Deck.rng = new System.Random(); }
+            Shuffle(); // shuffle all decks when they are created at game start
         }
 
         //Could be removed because same as list.Count -> Used for damage when library empty
         private int counter;
 
+        
         public int Counter { get { return counter; }
             set { counter = value; } }
 
@@ -58,25 +83,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             return available;
         }
 
-        public List<Card> Seek(EnumLibrary.CardSubtypes subType)
+        public Card Seek(EnumLibrary.CardSubtypes subType)
         {
-            List<Card> find = new List<Card>();
             foreach (var card in cardsInZone)
             {
                 if (card.subType.Equals(subType))
                 {
-                    find.Add(card);
+                    return card;
                 }
             }
-
-            if (find.Count > 0)
-            {
-                return find;
-            }
-            else
-            {
-                return null; //return null if no sutable cards where found. Must make sure to handle it.
-            }
+            return null; //return null if no sutable cards where found. Must make sure to handle it.
         }
 
         public List<Card> Search(EnumLibrary.CardSubtypes subType)
@@ -84,7 +100,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             List<Card> available = new List<Card>();
             foreach (Card card in cardsInZone)
             {
-                if (card.GetType().Equals(subType))
+                if (card.subType == subType)
                 {
                     available.Add(card);
                 }
@@ -100,6 +116,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
             return milledCards;
         }
+        
 
+        public void AddthirdFromTop(Card card)
+        {
+            cardsInZone[2] = card;
+        }
     }
 }

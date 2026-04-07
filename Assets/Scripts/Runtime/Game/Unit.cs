@@ -61,9 +61,9 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         }
 
         public override void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP, 
-            List<Effect> newEffects, List<Keywords> newKeywords)
+            List<Effect> newEffects, List<Trigger> newTriggers, List<Keywords> newKeywords)
         {
-            base.RankUp(newRank, newPower, newMaxHP, newEffects, newKeywords);
+            base.RankUp(newRank, newPower, newMaxHP, newEffects, newTriggers, newKeywords);
             keywords = newKeywords;
         }
     }

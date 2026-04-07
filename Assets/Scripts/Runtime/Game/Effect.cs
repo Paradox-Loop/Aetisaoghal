@@ -7,32 +7,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 {
     public class Effect : NetworkBehaviour
     {
-        public virtual void AddEffect() { }
-        public virtual void RemoveEffect() { }
-        public virtual void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets) { }
+        public virtual void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets) { }
 
         public class Ressource : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> RessourceEffectEvent;
             private int amount;
             private EnumLibrary.Ressources type;
-
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                RessourceEffectEvent.AddListener(RessourceTrigger);
+                RessourceEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                RessourceEffectEvent.RemoveListener(RessourceTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                RessourceEffectEvent.Invoke(rank, targets);
-            }
-
-            void RessourceTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void RessourceEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach (GameObject target in targets)
                 {
@@ -46,25 +32,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Healing : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> HealingEffectEvent;
             private int amount;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                HealingEffectEvent.AddListener(HealingTrigger);
+                HealingEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                HealingEffectEvent.RemoveListener(HealingTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                HealingEffectEvent.Invoke(rank, targets);
-            }
-
-            void HealingTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void HealingEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach (GameObject target in targets)
                 {
@@ -75,25 +50,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Damage : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> DamageEffectEvent;
             private int amount;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                DamageEffectEvent.AddListener(DamageTrigger);
+                DamageEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                DamageEffectEvent.RemoveListener(DamageTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                DamageEffectEvent.Invoke(rank, targets);
-            }
-
-            void DamageTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void DamageEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach (GameObject target in targets)
                 {
@@ -104,27 +68,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Buff : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> BuffEffectEvent;
             private int power;
             private int hp;
             private List<Keywords> keywords;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                BuffEffectEvent.AddListener(BuffTrigger);
+                BuffEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                BuffEffectEvent.RemoveListener(BuffTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                BuffEffectEvent.Invoke(rank, targets);
-            }
-
-            void BuffTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void BuffEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach(GameObject target in targets)
                 {
@@ -138,27 +91,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Debuff : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> DebuffEffectEvent;
             private int power;
             private int hp;
             private List<Keywords> keywords;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                DebuffEffectEvent.AddListener(DebuffTrigger);
+                DebuffEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                DebuffEffectEvent.RemoveListener(DebuffTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                DebuffEffectEvent.Invoke(rank, targets);
-            }
-
-            void DebuffTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void DebuffEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach (GameObject target in targets)
                 {
@@ -179,25 +121,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Draw : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> DrawEffectEvent;
             private int amount;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                DrawEffectEvent.AddListener(DrawTrigger);
+                DrawEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                DrawEffectEvent.RemoveListener(DrawTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                DrawEffectEvent.Invoke(rank, targets);
-            }
-
-            void DrawTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void DrawEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach(GameObject target in targets)
                 {
@@ -208,25 +139,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Discard : Effect
         {
-            UnityEvent<EnumLibrary.Ranks, List<GameObject>> DiscardEffectEvent;
             private int amount;
 
-            public override void AddEffect()
+            public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
-                DiscardEffectEvent.AddListener(DiscardTrigger);
+                DiscardEffect(rank, targets);
             }
 
-            public override void RemoveEffect()
-            {
-                DiscardEffectEvent.RemoveListener(DiscardTrigger);
-            }
-
-            public override void ActivateTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
-            {
-                DiscardEffectEvent.Invoke(rank, targets);
-            }
-
-            void DiscardTrigger(EnumLibrary.Ranks rank, List<GameObject> targets)
+            void DiscardEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 foreach (GameObject target in targets)
                 {
