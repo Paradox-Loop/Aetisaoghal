@@ -1,38 +1,84 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
-    internal class Leader : Card, ICombatEntity
+    public class Leader : Card, ICombatEntity
     {
-        int ICombatEntity.power { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        int ICombatEntity.maxHP { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        int ICombatEntity.currentHP { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        bool ICombatEntity.isExhausted { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        List<Keywords> ICombatEntity.keywords { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public int level;
+        public int commandCost;
+        public EnumLibrary.Ressources commandRessource;
+        public string proficiency; //To-Do change when proficiency are added
+        public List<int> levelCost;
+        public EnumLibrary.Ressources levelRessource;
+        public List<Effect> levelEffects;
+        private bool hasLeveled;
 
-        void ICombatEntity.Attack(ICombatEntity target)
+        public int power { get; set; }
+        public int maxHP { get; set; }
+        public int currentHP { get; set; }
+        public bool isExhausted { get; set; }
+        public List<Keywords> keywords { get; set; }
+
+        public void ActivateCommand(int cost, EnumLibrary.Ressources ressource, bool exhaust)
+        {
+
+        }
+
+        public bool canLevelUp()
+        {
+            return !hasLeveled;
+        }
+
+        public void LevelUp()
+        {
+            if (canLevelUp())
+            {
+                levelEffects[level].ActivateEffect(this.rank, new List<GameObject> {this.gameObject});
+                //To-Do Remove ressource to player equal to level cost
+                level += 1;
+            }
+        }
+
+        public void Attack(ICombatEntity target)
+        {
+            target.TakeDamage(power);
+            TakeDamage(target.power);
+        }
+
+        public void ChangeZone(Zone zone)
         {
             throw new System.NotImplementedException();
         }
 
-        void ICombatEntity.ChangeZone(Zone zone)
+        public void Die()
         {
-            throw new System.NotImplementedException();
+            //TODO Sent to gravayard
         }
 
-        void ICombatEntity.Die()
+        public void Heal(int amount)
         {
-            throw new System.NotImplementedException();
+            currentHP += amount;
+            if (currentHP >= maxHP)
+            {
+                currentHP = maxHP;
+            }
         }
 
-        void ICombatEntity.Heal(int amount)
+        public void TakeDamage(int amount)
         {
-            throw new System.NotImplementedException();
+            currentHP -= amount;
+            if (currentHP <= 0)
+            {
+                Die();
+            }
         }
 
-        void ICombatEntity.TakeDamage(int amount)
+        public override void RankUp(EnumLibrary.Ranks newRank, int newPower, int newMaxHP,
+            List<Effect> newEffects, List<Trigger> newTriggers, List<Keywords> newKeywords)
         {
-            throw new System.NotImplementedException();
+            base.RankUp(newRank, newPower, newMaxHP, newEffects, newTriggers, newKeywords);
+            keywords = newKeywords;
         }
     }
 }

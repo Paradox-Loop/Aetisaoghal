@@ -1,13 +1,8 @@
-using NUnit.Framework;
-using System.IO;
 using Unity.Netcode;
 using UnityEngine;
 using System.Collections.Generic;
-
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEditor.Experimental.GraphView;
-using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
@@ -16,14 +11,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private int nbrOfCardsRoundStart = 1;
         private int nbrOfManaStoneRoundStart = 1;
         private int nbrOfTokenCreatedRoundStart = 1;
-        private List<Zone> controlledZones;
+        public List<Zone> controlledZones;
         private Leader leader;
-        private List<Ressource> possecedResources;
+        public Dictionary<EnumLibrary.Ressources, int> possessedResources =
+            new Dictionary<EnumLibrary.Ressources, int>()
+            {
+                {EnumLibrary.Ressources.Mana, 0},
+                {EnumLibrary.Ressources.ArcaneKnowledge, 0},
+                {EnumLibrary.Ressources.Loot, 0},
+                {EnumLibrary.Ressources.Food, 0}
+            };
 
-
-
-        Gamemode gamemode;
-
+        MatchController matchController;
 
         // vars related to the player's turn time limit
         private const float TIME_LIMIT = 10;
@@ -139,18 +138,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void PlayCard(Card card) // play the selected card from hand and activate its effects
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             { 
                 card.Play();
             }
             
         }
 
-        public void Select(ISelectable selection)
+        public void Select(Selectable selection)
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             {
-                selection.Select(new UnityEngine.UIElements.VisualElement(), false);
+                selection.Select();
             }
         }
 
@@ -162,7 +161,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void Attack(ICombatEntity attacker, ICombatEntity target)
         {
-            if(gamemode.CheckLegalAction())
+            if(matchController.CheckLegalAction())
             {
                 attacker.Attack(target);
             }

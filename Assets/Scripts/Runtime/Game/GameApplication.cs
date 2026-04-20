@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.Netcode;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
