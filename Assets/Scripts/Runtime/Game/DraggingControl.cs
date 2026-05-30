@@ -8,11 +8,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         [SerializeField] private bool isDragging = false;
         [SerializeField] private Card parent;
+        MatchController matchController;
 
         // Update is called once per frame
         private void Start()
         {
             parent = GetComponentInParent<Card>();
+            matchController.GetComponent<MatchController>();
         }
         void Update()
         {
@@ -29,8 +31,23 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void OnDrag(PointerEventData eventData)
         {
-            if(parent.currentZone == Hand)
+            if (matchController.GetZone(parent) is Hand)
+            {
+                isDragging = true;
+                //play hand drag anim
 
+            }
+            else if (matchController.GetZone(parent) is FrontLine || matchController.GetZone(parent) is BackLine)
+            {
+                isDragging = true;
+                //play attack drag anim
+            }
+        }
+
+        public void OnDragEnd()
+        {
+            isDragging = false;
+            //remove drag anim
         }
     }
 }

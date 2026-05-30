@@ -38,6 +38,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             }
             return valid;
         }
+
+        
       
     }
 }
