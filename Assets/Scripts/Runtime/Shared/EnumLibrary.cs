@@ -26,7 +26,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
            Ritual,
            Scheme,
            Monster,
-           Hero
+           Hero,
+           None
         }
 
         public enum Ranks

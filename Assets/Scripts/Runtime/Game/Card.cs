@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -6,6 +7,7 @@ using Image = UnityEngine.UIElements.Image;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
+   
     public class Card : NetworkBehaviour
     {
         public EnumLibrary.Factions faction;
@@ -19,6 +21,18 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         private Image image;
         private Text text;
+
+        //set the parameters of the card read from a JSON file.
+        public void Init(string name, EnumLibrary.Factions faction, EnumLibrary.CardTypes cardTypes, EnumLibrary.CardSubtypes subtype, int cost, List<Effect> effects)
+        {
+            this.name = name;
+            this.faction = faction;
+            this.cardType = cardTypes;
+            this.subType = subtype;
+            this.cost = cost;
+            this.effects = effects;
+
+        }
         
         public void Play()
         {
