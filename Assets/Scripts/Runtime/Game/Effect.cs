@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Unity.Netcode;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
@@ -13,6 +12,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             private int amount;
             private EnumLibrary.Ressources type;
+
+            public void Init(int amount, EnumLibrary.Ressources type)
+            {
+                this.amount = amount;
+                this.type = type;
+            }
+
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 RessourceEffect(rank, targets);
@@ -34,6 +40,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             private int amount;
 
+            public void Init(int amount)
+            {
+                this.amount = amount;
+            }
+
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 HealingEffect(rank, targets);
@@ -51,6 +62,10 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public class Damage : Effect
         {
             private int amount;
+            public void Init(int amount)
+            {
+                this.amount = amount;
+            }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
@@ -71,6 +86,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             private int power;
             private int hp;
             private List<Keywords> keywords;
+
+            public void Init(int power, int hp, List<Keywords> keywords)
+            {
+                this.power = power;
+                this.hp = hp;
+                this.keywords = keywords;
+            }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
@@ -94,6 +116,13 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             private int power;
             private int hp;
             private List<Keywords> keywords;
+
+            public void Init(int power, int hp, List<Keywords> keywords)
+            {
+                this.power = power;
+                this.hp = hp;
+                this.keywords = keywords;
+            }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
@@ -123,6 +152,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         {
             private int amount;
 
+            public void Init(int amount)
+            {
+                this.amount = amount;
+            }
+
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {
                 DrawEffect(rank, targets);
@@ -140,6 +174,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public class Discard : Effect
         {
             private int amount;
+
+            public void Init(int amount)
+            {
+                this.amount = amount;
+            }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
             {

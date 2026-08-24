@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
@@ -15,6 +17,23 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public int currentHP { get; set; }
         public bool isExhausted { get; set; }
         public List<Keywords> keywords { get; set; }
+
+        public void Init(EnumLibrary.Factions faction, EnumLibrary.CardTypes cardType,
+            EnumLibrary.CardSubtypes subType, int cost, string cardName, EnumLibrary.Ranks rank,
+            List<Effect> effects, List<Trigger> triggers, Image image, Text text, bool isToken,
+            int activeCost, EnumLibrary.Ressources activeRessource, int power, int maxHP, 
+            int currentHP, bool isExhausted, List<Keywords> keywords)
+        {
+            base.Init(faction, cardType, subType, cost, cardName, rank, effects, triggers, image, text);
+            this.isToken = isToken;
+            this.activeCost = activeCost;
+            this.activeRessource = activeRessource;
+            this.power = power;
+            this.maxHP = maxHP;
+            this.currentHP = currentHP;
+            this.isExhausted = isExhausted;
+            this.keywords = keywords;
+        }
 
         public void ActivateAbility(int cost, EnumLibrary.Ressources ressource, bool exhaust)
         {

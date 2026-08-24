@@ -91,6 +91,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public void CheckTriggers()
         {
+            //Check if triggers is relevant/valid (should be activated?)
             foreach (var card in cardWithTriggers)
             {
                 foreach (var trigger in card.triggers)
@@ -123,7 +124,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             playersPassed.Clear();
             currentRound++;
             activePlayer = startingPlayer;
+            foreach (Player player in players) { 
+                
+            }
             CheckTriggers();
+            //Give Mana Stone and Draw Cards and Tokens
+            //Untap Units and Leader
+            //Refresh Level-up Flag and Leader Ability
+            //Reduce Seekers Rituals
         }
 
         private void EndRound()
@@ -136,6 +144,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 startingPlayer = players[currentIndex];
                 playersPassed.Clear();
             }
+            //Check Max Hand Size and Discard
+            //End "Until end of round" effects
         }
 
         private void StartTurn()

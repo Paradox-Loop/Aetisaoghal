@@ -19,7 +19,23 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         private Image image;
         private Text text;
-        
+
+        public void Init(EnumLibrary.Factions faction, EnumLibrary.CardTypes cardType, 
+            EnumLibrary.CardSubtypes subType, int cost, string cardName, EnumLibrary.Ranks rank,
+            List<Effect> effects, List<Trigger> triggers, Image image, Text text)
+        {
+            this.faction = faction;
+            this.cardType = cardType;
+            this.subType = subType;
+            this.cost = cost;
+            this.cardName = cardName;
+            this.rank = rank;
+            this.effects = effects;
+            this.triggers = triggers;
+            this.image = image;
+            this.text = text;
+        }
+
         public void Play()
         {
         

@@ -45,5 +45,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             ArcaneKnowledge,
             Loot
         }
+
+        public enum Sources{
+            Self,
+            Tokens,
+            Units,
+            Spells,
+            Ritual,
+            Scheme,
+            Monster,
+            Hero
+        }
     }
 }

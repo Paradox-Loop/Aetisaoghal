@@ -12,6 +12,11 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         public virtual void DeleteTrigger() { }
         public virtual void DoTrigger(EnumLibrary.Ranks rank, List<GameObject> targets) { }
 
+        public void Init(List<Effect> effects)
+        {
+            this.effects = effects;
+        }
+
         public class Deploy : Trigger
         {
             UnityEvent<EnumLibrary.Ranks, List<GameObject>> DeployTriggerEvent;

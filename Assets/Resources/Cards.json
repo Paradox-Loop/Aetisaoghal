@@ -1,0 +1,350 @@
+{
+	"Apprentice" : {
+		
+	},
+	"Burn Ritual" : {
+		"cardName" : "Burn Ritual",
+		"cost" : 2,
+		"faction" : "Seeker",
+		"cardType" : "Spell",
+		"cardSubtype" : "Ritual",
+		"rank" : "Recruit",
+		"effects" : [
+			{
+				"effect" : "Damage",
+				"rank" : "Recruit",
+			 	"amount" : 5
+			}
+		],
+		"triggers" : [
+			{
+
+			}
+		],
+		"image" : [],
+		"text" : "Deal 5 damage to any target then return this spell to your hand"
+	},
+	"Chain Lightning" : {
+		"cardName" : "Chain Lightning",
+		"cost" : 2,
+		"faction" : "Seeker",
+		"cardType" : "Spell",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"effects" : [
+			{
+				"effect" : "Damage",
+				"rank" : "Recruit",
+			 	"amount" : 15
+			},
+			{
+				"effect" : "Damage",
+				"rank" : "Veteran",
+				"amount" : 30
+			},
+			{
+				"effect" : "Damage",
+				"rank" : "Elite",
+				"amount" : 50
+			}
+		],
+		"triggers" : [
+			{
+
+			}
+		],
+		"image" : [],
+		"text" : "Deal 15 damage divided amoung any number of units\nV - Deal 30 damage instead\nE - Deal 50 damage instead"
+	},
+	"Explosive Results" : {
+		"cardName" : "Explosive Results",
+		"cost" : 3,
+		"faction" : "Seeker",
+		"cardType" : "Spell",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"effects" : [
+			{
+				"effect" : "Damage",
+				"rank" : "Recruit",
+			 	"amount" : 5
+			},
+			{
+				"effect" : "Damage",
+				"rank" : "Recruit",
+				"amount" : 15
+			}
+		],
+		"triggers" : [
+			{
+
+			}
+		],
+		"image" : [],
+		"text" : "This spell deals 5 damage to all of your units\nDeal 15 damage to all units your opponent control"
+	},
+	"Ice Trap" : {
+		"cardName" : "Ice Trap",
+		"cost" : 2,
+		"faction" : "Seeker",
+		"cardType" : "Spell",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"effects" : [
+			{
+				"effect" : "Debuff",
+				"rank" : "Recruit",
+			 	"numOfTargets" : 1,
+			 	"power" : 0,
+			 	"hp" : 0,
+			 	"keywords" : [
+			 		{
+			 			"keyword" : "Stunned"
+			 		}
+			 	]
+			},
+			{
+				"effect" : "Debuff",
+				"rank" : "Veteran",
+			 	"numOfTargets" : 2,
+			 	"power" : 0,
+			 	"hp" : 0,
+			 	"keywords" : [
+			 		{
+			 			"keyword" : "Stunned"
+			 		}
+			 	]
+			},
+			{
+				"effect" : "Debuff",
+				"rank" : "Elite",
+			 	"numOfTargets" : 3,
+			 	"power" : 0,
+			 	"hp" : 0,
+			 	"keywords" : [
+			 		{
+			 			"keyword" : "Stunned"
+			 		}
+			 	]
+			}
+		],
+		"triggers" : [
+			{
+
+			}
+		],
+		"image" : [],
+		"text" : "Target unit cannot attack until the end of the next round\nV - Up to 2 target unit cannot attack until the end of the next round instead\nE - Up to 3 target unit cannot attack until the end of the next round instead"
+	},
+	"Initiate" : {
+		"cardName" : "Initiate",
+		"cost" : 2,
+		"faction" : "Seeker",
+		"cardType" : "Unit",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"isToken" : false,
+		"activeCost" : null,
+		"activeRessource" : null,
+		"power" : [
+			{
+				"rank" : "Recruit",
+				"amount" : 10
+			},
+			{
+				"rank" : "Veteran",
+				"amount" : 15
+			},
+			{
+				"rank" : "Elite",
+				"amount" : 20
+			}
+		],
+		"maxHP" : [
+			{
+				"rank" : "Recruit",
+				"amount" : 10
+			},
+			{
+				"rank" : "Veteran",
+				"amount" : 15
+			},
+			{
+				"rank" : "Elite",
+				"amount" : 20
+			}
+		],
+		"currentHP" : 10,
+		"isExhausted" : false,
+		"keywords" : [
+			{
+
+			}
+		],
+		"effects" : [
+			{
+
+			}
+		],
+		"triggers" : [
+			{
+				"trigger" : "Deploy",
+				"rank" : "Recruit",
+				"effects" : [
+					{
+						"effect" : "Ritualist",
+						"amount" : 2
+					}
+				]
+			},
+			{
+				"trigger" : "Perish",
+				"rank" : "Veteran",
+				"effects" : [
+					{
+						"effect" : "Ressource",
+						"amount" : 2,
+						"type" : "ArcaneKnowledge"
+					}
+				]
+			}
+		],
+		"image" : [],
+		"text" : "Target unit cannot attack until the end of the next round\nV - Up to 2 target unit cannot attack until the end of the next round instead\nE - Up to 3 target unit cannot attack until the end of the next round instead"
+	},
+	"Instructor" : {
+		"cardName" : "Instructor",
+		"cost" : 3,
+		"faction" : "Seeker",
+		"cardType" : "Unit",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"isToken" : false,
+		"activeCost" : null,
+		"activeRessource" : null,
+		"power" : [
+			{
+				"rank" : "Recruit",
+				"amount" : 20
+			},
+			{
+				"rank" : "Veteran",
+				"amount" : 25
+			},
+			{
+				"rank" : "Elite",
+				"amount" : 30
+			}
+		],
+		"maxHP" : [
+			{
+				"rank" : "Recruit",
+				"amount" : 20
+			},
+			{
+				"rank" : "Veteran",
+				"amount" : 25
+			},
+			{
+				"rank" : "Elite",
+				"amount" : 30
+			}
+		],
+		"currentHP" : 20,
+		"isExhausted" : false,
+		"keywords" : [
+			{
+
+			}
+		],
+		"effects" : [
+			{
+				"effect" : "Buff",
+				"rank" : "Elite",
+				"power" : 10,
+				"hp" : 10,
+				"keywords" : [
+					
+				],
+				"target" : "Tokens"
+			}
+		],
+		"triggers" : [
+			{
+				"trigger" : "Deploy",
+				"rank" : "Recruit",
+				"source" : "Tokens",
+				"effects" : [
+					{
+						"effect" : "Ressource",
+						"amount" : 1,
+						"type" : "ArcaneKnowledge"
+					}
+				]
+			},
+			{
+				"trigger" : "Prepare",
+				"rank" : "Veteran",
+				"effects" : [
+					{
+						"effect" : "Damage",
+						"amount" : 3
+					},
+					{
+						"effect" : "Ressource",
+						"amount" : 1,
+						"type" : "ArcaneKnowledge"
+					}
+				]
+			}
+		],
+		"image" : [],
+		"text" : "When an Apprentice enter the battlefield, gain 1 AK\nV - Prepare : Deal 3 damage to an Apprentice you control, gain 1 AK\nE - Apprentice tokens gains +10/+10"
+	},
+	"Intense Study" : {
+		"cardName" : "Intense Study",
+		"cost" : 2,
+		"faction" : "Seeker",
+		"cardType" : "Spell",
+		"cardSubtype" : "None",
+		"rank" : "Recruit",
+		"effects" : [
+			{
+				"effect" : "Draw",
+				"rank" : "Recruit",
+			 	"amount" : 1
+			},
+			{
+				"effect" : "Ressource",
+				"rank" : "Recruit",
+				"amount" : 1,
+				"type" : "Mana",
+				"flag" : "Delayed"
+			},
+			{
+				"effect" : "Ressource",
+				"rank" : "Veteran",
+				"amount" : 1,
+				"type" : "ArcaneKnowledge"
+			},
+			{
+				"effect" : "Ritualist",
+				"rank" : "Elite",
+				"amount" : 1
+			}
+		],
+		"triggers" : [
+			{
+
+			}
+		],
+		"image" : [],
+		"text" : "Draw 1 card. Gain 1 Mana at the begining of the next round\nV - Gain 1 AK\nE - Ritualist 1"
+	},
+	"Seekers Leader 1" : {
+
+	},
+	"Magic Missile Guy" : {
+
+	}
+}
