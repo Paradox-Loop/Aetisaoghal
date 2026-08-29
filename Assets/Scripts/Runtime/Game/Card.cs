@@ -22,18 +22,22 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         private Image image;
         private Text text;
 
-        //set the parameters of the card read from a JSON file.
-        public void Init(string name, EnumLibrary.Factions faction, EnumLibrary.CardTypes cardTypes, EnumLibrary.CardSubtypes subtype, int cost, List<Effect> effects)
+        public void Init(EnumLibrary.Factions faction, EnumLibrary.CardTypes cardType, 
+            EnumLibrary.CardSubtypes subType, int cost, string cardName, EnumLibrary.Ranks rank,
+            List<Effect> effects, List<Trigger> triggers, Image image, Text text)
         {
-            this.name = name;
             this.faction = faction;
-            this.cardType = cardTypes;
-            this.subType = subtype;
+            this.cardType = cardType;
+            this.subType = subType;
             this.cost = cost;
+            this.cardName = cardName;
+            this.rank = rank;
             this.effects = effects;
-
+            this.triggers = triggers;
+            this.image = image;
+            this.text = text;
         }
-        
+
         public void Play()
         {
         
