@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.Template.Multiplayer.NGO.Runtime.SimpleJSON;
 using UnityEngine;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
@@ -13,12 +14,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
         [Serializable]
         private class JsonCard
         {
-
+            public string type;
             public string name;
             public string faction;
             public string cardSubtype;
             public string cardType;
             public int cost;
+            public string power;
+            public string hp;
             public string cardName;
             public string effects; //effects of the card, using this to read and parse the effect from the json file.
         }
@@ -38,9 +41,49 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             public List<IDs> ids;
         }
         [Serializable]
+        private class  EffectWrapper
+        {
+            public List<JsonEffects> effects;
+        }
+        [Serializable]
         private class JsonEffects
         {
-
+            public string effectType;
+            public string data;
+        }
+        [Serializable]
+        private class JsonRessourceEffects
+        {
+            public string amount;
+            public string ressourceType;
+        }
+        private class JsonHealingEffect
+        {
+            public string amount;
+        }
+        private class JsonDamageEffect
+        {
+            public string amount;
+        }
+        private class JsonBuffEffect
+        {
+            public string power;
+            public string hp;
+            public string keywords;
+        }
+        private class JsonDebuffEffect
+        {
+            public string power;
+            public string hp;
+            public string keywords;
+        }
+        private class JsonDrawEffect
+        {
+            public string amount;
+        }
+        private class JsonDiscardEffect
+        {
+            public string amount;
         }
         private struct Types
         {
@@ -73,6 +116,20 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 this.faction = faction;
             }
         }
+        private struct Ressources
+        {
+            public string name;
+            public EnumLibrary.Ressources ressource;
+            public Ressources(string name, EnumLibrary.Ressources ressource)
+            {
+                this.name = name;
+                this.ressource = ressource;
+            }
+        }
+        private struct intArray
+        {
+            public List<int> values;
+        }
         // Do not forget to updates this file if new enums are added.
         private List<Types> cardTypes = new List<Types>() {new Types( "Unit", EnumLibrary.CardTypes.Unit), new Types("Spell", EnumLibrary.CardTypes.Spell), 
             new Types("Leader", EnumLibrary.CardTypes.Leader), new Types("Mana Stone", EnumLibrary.CardTypes.ManaStone)};
@@ -82,7 +139,9 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         private List<Factions> factions = new List<Factions>() { new Factions("Neutral", EnumLibrary.Factions.Neutral), new Factions("Seekers", EnumLibrary.Factions.Seeker),
             new Factions("Underworld", EnumLibrary.Factions.Underworld), new Factions("Order", EnumLibrary.Factions.Order), new Factions("Wild", EnumLibrary.Factions.Wild)};
-
+        private List<Ressources> ressourceTypes = new List<Ressources> { new Ressources("Mana", EnumLibrary.Ressources.Mana), new Ressources("Cards", EnumLibrary.Ressources.Card),
+            new Ressources("Loot", EnumLibrary.Ressources.Loot), new Ressources("Arcane Knowledge", EnumLibrary.Ressources.ArcaneKnowledge), new Ressources("Food", EnumLibrary.Ressources.Food),
+            new Ressources("Token", EnumLibrary.Ressources.Token)};
 
         public bool Read(string database, string list)
         {
@@ -111,24 +170,136 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 ConvertCards(cards);
                 return true;
             }
+            return false;
         }
-            private void ConvertCards(List<JsonCard> cards)
+        private void ConvertCards(List<JsonCard> cards)
+        {
+            foreach (JsonCard jsonCard in cards)
             {
-                foreach (JsonCard jsonCard in cards)
+                //parse to Enums
+                EnumLibrary.CardTypes cardType = GetCardType(jsonCard.cardType);
+                EnumLibrary.CardSubtypes subtype;
+                subtype = GetCardSubtype(jsonCard.cardSubtype);
+
+                EnumLibrary.Factions faction = GetFaction(jsonCard.faction);
+
+                List<int> power = new List<int>() {0};
+                List<int> hp = new List<int>() { 0 };
+                if(jsonCard.power != null && jsonCard.hp != null)
                 {
-                    //parse strings to Enums
-                    EnumLibrary.CardTypes cardType = GetCardType(jsonCard.cardType);
-                    EnumLibrary.CardSubtypes subtype;
-                    subtype = GetCardSubtype(jsonCard.cardSubtype);
+                    power = readIntArray(jsonCard.power);
+                    hp = readIntArray(jsonCard.hp);
+                }
 
-                    EnumLibrary.Factions faction = GetFaction(jsonCard.faction);
+                int cost = jsonCard.cost;
+                    
+                string name = jsonCard.name;
+                    
+                List<Effect> effects = GetEffects(jsonCard.effects); //parse all the card effects
 
-                    GameObject goCard = new GameObject("");
-                    goCard.AddComponent<Card>();
-                    Card card = goCard.GetComponent<Card>();
-                    card.Init(card.name, faction, cardType, subtype, card.cost, card.effects);
+                // called correct factory method for card type
+                if (cardType == EnumLibrary.CardTypes.ManaStone)
+                {
+                    prefabFactory.CreateCardMana(cardType, name, effects);
+                }
+                else if (cardType == EnumLibrary.CardTypes.Leader)
+                {
+                    prefabFactory.CreateLeader(cardType, name, power, hp, faction, effects);
+                }
+                else if (cardType == EnumLibrary.CardTypes.Unit)
+                {
+                    prefabFactory.CreateUnit(cardType, name, cost, faction, subtype, power, hp, effects);
+                }
+                else if(cardType == EnumLibrary.CardTypes.Spell)
+                {
+                    prefabFactory.CreateSpell(cardType, name, cost, faction, subtype, effects);
                 }
             }
+        }
+
+        private List<Effect> GetEffects(string db)
+        {
+            List<JsonEffects> jsonEffects = JsonUtility.FromJson<List<JsonEffects>>(db);
+            List<Effect> effects = new List<Effect>();
+            foreach (JsonEffects jsonEffect in jsonEffects)
+            {
+                if (jsonEffect.effectType == "Ressource")
+                {
+                    JsonRessourceEffects jsonRessourceEffect = JsonUtility.FromJson<JsonRessourceEffects>(jsonEffect.data);
+                    Effect.Ressource ressource = new Effect.Ressource();
+                    EnumLibrary.Ressources ressourceType = getRessourceType(jsonRessourceEffect.ressourceType);
+
+                    if (ressourceType == EnumLibrary.Ressources.Error)
+                    {
+                        throw new Exception("Invalid ressource type exception");
+                    }
+                    effects.Add(prefabFactory.CreateRessourceEffect(ressource, readIntArray(jsonRessourceEffect.amount));
+                }
+                else if (jsonEffect.effectType == "Healing")
+                {
+                    JsonHealingEffect jSonHealingEffect = JsonUtility.FromJson<JsonHealingEffect>(jsonEffect.data);
+                    effects.Add(prefabFactory.CreateSimpleEffect("heal", readIntArray(jSonHealingEffect.amount)));
+                }
+                else if (jsonEffect.effectType == "Damage")
+                {
+                    JsonDamageEffect jsonDamageEffect = JsonUtility.FromJson<JsonDamageEffect>(jsonEffect.data);
+                    effects.Add(prefabFactory.CreateSimpleEffect("damage", readIntArray(jsonDamageEffect.amount)));
+                }
+                else if(jsonEffect.effectType == "Buff")
+                {
+                    JsonBuffEffect jsonBuffEffect = JsonUtility.FromJson<JsonBuffEffect>(jsonEffect.data);
+                    List<int> power = readIntArray(jsonBuffEffect.power);
+                    List<int> hp = readIntArray(jsonBuffEffect.hp);
+                    List<Keywords> keywords = GetKeywords(jsonBuffEffect.keywords);
+                    effects.Add(prefabFactory.CreateBuffEffect(power, hp, keywords, "buff"));
+                }
+                else if( jsonEffect.effectType == "Debuff")
+                {
+                    JsonDebuffEffect jsonDebuffEffect = JsonUtility.FromJson<JsonDebuffEffect>(jsonEffect.data);
+                    List<int> power = readIntArray(jsonDebuffEffect.power);
+                    List<int> hp = readIntArray(jsonDebuffEffect.hp);
+                    List<Keywords> keywords = GetKeywords(jsonDebuffEffect.keywords);
+                    effects.Add(prefabFactory.CreateBuffEffect(power, hp, keywords, "debuff"));
+                }
+                else if(jsonEffect.effectType == "Draw")
+                {
+                    JsonDrawEffect jsonDrawEffect = JsonUtility.FromJson<JsonDrawEffect>(jsonEffect.data);
+                    effects.Add(prefabFactory.CreateSimpleEffect("draw", readIntArray(jsonDrawEffect.amount));
+                }
+                else if(jsonEffect.effectType == "Discard")
+                {
+                    JsonDiscardEffect jsonDiscardEffect = JsonUtility.FromJson<JsonDiscardEffect>(jsonEffect.data);
+                    effects.Add(prefabFactory.CreateSimpleEffect("discard", readIntArray(jsonDiscardEffect.amount)));
+                }
+            }
+            return effects;
+        }
+
+        private List<int> readIntArray(string power)
+        {
+            List<int> array = new List<int>();
+            intArray intArray = JsonUtility.FromJson<intArray>(power);
+            foreach (int i in intArray.values)
+            {
+                array.Add(i);
+            }
+            return array;
+        }
+
+        private List<Keywords> GetKeywords(string keywords)
+        {
+            throw new NotImplementedException();
+        }
+
+        private EnumLibrary.Ressources getRessourceType(string ressourceType)
+        {
+            foreach(var type in ressourceTypes)
+            {
+                if (type.name == ressourceType)
+                    return type.ressource;
+            }
+            return EnumLibrary.Ressources.Error;
+        }
 
         private List<string> getNamesFromDecklist(decklist list)
         {
