@@ -200,19 +200,19 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 // called correct factory method for card type
                 if (cardType == EnumLibrary.CardTypes.ManaStone)
                 {
-                    prefabFactory.CreateCardMana(cardType, name, effects);
+                    scriptableFactory.CreateCardMana(cardType, name, effects);
                 }
                 else if (cardType == EnumLibrary.CardTypes.Leader)
                 {
-                    prefabFactory.CreateLeader(cardType, name, power, hp, faction, effects);
+                    scriptableFactory.CreateLeader(cardType, name, power, hp, faction, effects);
                 }
                 else if (cardType == EnumLibrary.CardTypes.Unit)
                 {
-                    prefabFactory.CreateUnit(cardType, name, cost, faction, subtype, power, hp, effects);
+                    scriptableFactory.CreateUnit(cardType, name, cost, faction, subtype, power, hp, effects);
                 }
                 else if(cardType == EnumLibrary.CardTypes.Spell)
                 {
-                    prefabFactory.CreateSpell(cardType, name, cost, faction, subtype, effects);
+                    scriptableFactory.CreateSpell(cardType, name, cost, faction, subtype, effects);
                 }
             }
         }
@@ -233,17 +233,17 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                     {
                         throw new Exception("Invalid ressource type exception");
                     }
-                    effects.Add(prefabFactory.CreateRessourceEffect(ressource, readIntArray(jsonRessourceEffect.amount));
+                    effects.Add(scriptableFactory.CreateRessourceEffect(ressourceType, readIntArray(jsonRessourceEffect.amount)));
                 }
                 else if (jsonEffect.effectType == "Healing")
                 {
                     JsonHealingEffect jSonHealingEffect = JsonUtility.FromJson<JsonHealingEffect>(jsonEffect.data);
-                    effects.Add(prefabFactory.CreateSimpleEffect("heal", readIntArray(jSonHealingEffect.amount)));
+                    effects.Add(scriptableFactory.CreateSimpleEffect("heal", readIntArray(jSonHealingEffect.amount)));
                 }
                 else if (jsonEffect.effectType == "Damage")
                 {
                     JsonDamageEffect jsonDamageEffect = JsonUtility.FromJson<JsonDamageEffect>(jsonEffect.data);
-                    effects.Add(prefabFactory.CreateSimpleEffect("damage", readIntArray(jsonDamageEffect.amount)));
+                    effects.Add(scriptableFactory.CreateSimpleEffect("damage", readIntArray(jsonDamageEffect.amount)));
                 }
                 else if(jsonEffect.effectType == "Buff")
                 {
@@ -251,7 +251,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                     List<int> power = readIntArray(jsonBuffEffect.power);
                     List<int> hp = readIntArray(jsonBuffEffect.hp);
                     List<Keywords> keywords = GetKeywords(jsonBuffEffect.keywords);
-                    effects.Add(prefabFactory.CreateBuffEffect(power, hp, keywords, "buff"));
+                    effects.Add(scriptableFactory.CreateBuffEffect(power, hp, keywords, "buff"));
                 }
                 else if( jsonEffect.effectType == "Debuff")
                 {
@@ -259,17 +259,17 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                     List<int> power = readIntArray(jsonDebuffEffect.power);
                     List<int> hp = readIntArray(jsonDebuffEffect.hp);
                     List<Keywords> keywords = GetKeywords(jsonDebuffEffect.keywords);
-                    effects.Add(prefabFactory.CreateBuffEffect(power, hp, keywords, "debuff"));
+                    effects.Add(scriptableFactory.CreateBuffEffect(power, hp, keywords, "debuff"));
                 }
                 else if(jsonEffect.effectType == "Draw")
                 {
                     JsonDrawEffect jsonDrawEffect = JsonUtility.FromJson<JsonDrawEffect>(jsonEffect.data);
-                    effects.Add(prefabFactory.CreateSimpleEffect("draw", readIntArray(jsonDrawEffect.amount));
+                    effects.Add(scriptableFactory.CreateSimpleEffect("draw", readIntArray(jsonDrawEffect.amount));
                 }
                 else if(jsonEffect.effectType == "Discard")
                 {
                     JsonDiscardEffect jsonDiscardEffect = JsonUtility.FromJson<JsonDiscardEffect>(jsonEffect.data);
-                    effects.Add(prefabFactory.CreateSimpleEffect("discard", readIntArray(jsonDiscardEffect.amount)));
+                    effects.Add(scriptableFactory.CreateSimpleEffect("discard", readIntArray(jsonDiscardEffect.amount)));
                 }
             }
             return effects;

@@ -411,7 +411,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Runtime/Game/JSON
+    - Assets/Scripts/Runtime/Game/ScripatableObjects
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -421,15 +421,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 78
   m_LastFolders:
-  - Assets/Scripts/Runtime/Game/JSON
+  - Assets/Scripts/Runtime/Game/ScripatableObjects
   m_LastFoldersGridSize: 78
   m_LastProjectPath: C:\GIT\Aetisaoghal
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: 5edf0000
-    m_LastClickedID: 57182
+    m_SelectedIDs: 22e00000
+    m_LastClickedID: 57378
     m_ExpandedIDs: 000000000ede000010de000012de000014de000016de000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1e070000
+      m_SelectedIDs: 44e00000
       m_LastClickedID: 0
       m_ExpandedIDs: 10fbffff
       m_RenameOverlay:
