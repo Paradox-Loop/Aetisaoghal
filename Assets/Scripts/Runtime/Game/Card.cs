@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -6,6 +7,7 @@ using Image = UnityEngine.UIElements.Image;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
+   
     public class Card : NetworkBehaviour
     {
         public EnumLibrary.Factions faction;

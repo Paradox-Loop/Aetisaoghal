@@ -7,15 +7,20 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
     public class Effect : NetworkBehaviour
     {
         public virtual void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets) { }
+        public virtual void Init(List<int> amount) { }
+        private const int NUMBER_OF_RANKS = 3;
 
         public class Ressource : Effect
         {
-            private int amount;
+            private int[] amount = new int[NUMBER_OF_RANKS];
             private EnumLibrary.Ressources type;
 
-            public void Init(int amount, EnumLibrary.Ressources type)
+            public void Init(List<int> amount, EnumLibrary.Ressources type)
             {
-                this.amount = amount;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.amount[i] = amount[i];
+                }
                 this.type = type;
             }
 
@@ -30,7 +35,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 {
                     if (target.GetComponent<Player>())
                     {
-                        target.GetComponent<Player>().possessedResources[type] += amount;
+                        int temp = (int)rank;
+                        target.GetComponent<Player>().possessedResources[type] += amount[temp];
                     }
                 }
             }
@@ -38,11 +44,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Healing : Effect
         {
-            private int amount;
+            private int[] amount = new int[NUMBER_OF_RANKS];
 
-            public void Init(int amount)
+            public override void Init(List<int> amount)
             {
-                this.amount = amount;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.amount[i] = amount[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -54,17 +63,21 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             {
                 foreach (GameObject target in targets)
                 {
-                    target.GetComponent<ICombatEntity>().Heal(amount);
+                    int temp = (int)rank;
+                    target.GetComponent<ICombatEntity>().Heal(this.amount[temp]);
                 }
             }
         }
 
         public class Damage : Effect
         {
-            private int amount;
-            public void Init(int amount)
+            private int[] amount = new int[NUMBER_OF_RANKS];
+            public override void Init(List<int> amount)
             {
-                this.amount = amount;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.amount[i] = amount[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -76,22 +89,26 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             {
                 foreach (GameObject target in targets)
                 {
-                    target.GetComponent<ICombatEntity>().TakeDamage(amount);
+                    int temp = (int)rank;
+                    target.GetComponent<ICombatEntity>().TakeDamage(amount[temp]);
                 }
             }
         }
 
         public class Buff : Effect
         {
-            private int power;
-            private int hp;
-            private List<Keywords> keywords;
+            private int[] power = new int[NUMBER_OF_RANKS];
+            private int[] hp = new int[NUMBER_OF_RANKS];
+            private List<Keywords>[] keywords = new List<Keywords>[NUMBER_OF_RANKS];
 
-            public void Init(int power, int hp, List<Keywords> keywords)
+            public void Init(List<int> power, List<int> hp, List<Keywords>[] keywords)
             {
-                this.power = power;
-                this.hp = hp;
-                this.keywords = keywords;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.power[i] = power[i];
+                    this.hp[i] = hp[i];
+                    this.keywords[i] = keywords[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -103,25 +120,29 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             {
                 foreach(GameObject target in targets)
                 {
-                    target.GetComponent<ICombatEntity>().power += power;
-                    target.GetComponent<ICombatEntity>().maxHP += hp;
-                    target.GetComponent<ICombatEntity>().currentHP += hp;
-                    target.GetComponent<ICombatEntity>().keywords.AddRange(keywords);
+                    int temp = (int)rank;
+                    target.GetComponent<ICombatEntity>().power += power[temp];
+                    target.GetComponent<ICombatEntity>().maxHP += hp[temp];
+                    target.GetComponent<ICombatEntity>().currentHP += hp[temp];
+                    target.GetComponent<ICombatEntity>().keywords.AddRange(keywords[temp]);
                 }
             }
         }
 
         public class Debuff : Effect
         {
-            private int power;
-            private int hp;
-            private List<Keywords> keywords;
+            private int[] power = new int[NUMBER_OF_RANKS];
+            private int[] hp = new int[NUMBER_OF_RANKS];
+            private List<Keywords>[] keywords = new List<Keywords>[NUMBER_OF_RANKS];
 
-            public void Init(int power, int hp, List<Keywords> keywords)
+            public void Init(List<int> power, List<int> hp, List<Keywords>[] keywords)
             {
-                this.power = power;
-                this.hp = hp;
-                this.keywords = keywords;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.power[i] = power[i];
+                    this.hp[i] = hp[i];
+                    this.keywords[i] = keywords[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -133,28 +154,37 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             {
                 foreach (GameObject target in targets)
                 {
-                    target.GetComponent<ICombatEntity>().power -= power;
-                    target.GetComponent<ICombatEntity>().maxHP -= hp;
-                    target.GetComponent<ICombatEntity>().currentHP -= hp;
-                    target.GetComponent<ICombatEntity>().keywords.ForEach(delegate (Keywords k)
+                    int temp = (int)rank;
+                    target.GetComponent<ICombatEntity>().power -= power[temp];
+                    target.GetComponent<ICombatEntity>().maxHP -= hp[temp];
+                    target.GetComponent<ICombatEntity>().currentHP -= hp[temp];
+                    for (int i = 0; i < NUMBER_OF_RANKS; i++)
                     {
-                        if (keywords.Contains(k))
+                        List<Keywords> rankKeywords = keywords[i];
+                        target.GetComponent<ICombatEntity>().keywords.ForEach(delegate (Keywords k)
                         {
-                            target.GetComponent<ICombatEntity>().keywords.Remove(k);
-                        }
+                            if (rankKeywords.Contains(k))
+                            {
+                                target.GetComponent<ICombatEntity>().keywords.Remove(k);
+                            }
                         
-                    });
+                        } );
+                    }
+                   
                 }
             }
         }
 
         public class Draw : Effect
         {
-            private int amount;
+            private int[] amount = new int[NUMBER_OF_RANKS];
 
-            public void Init(int amount)
+            public override void Init(List<int> amount)
             {
-                this.amount = amount;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.amount[i] = amount[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -173,11 +203,14 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
 
         public class Discard : Effect
         {
-            private int amount;
+            private int[] amount = new int[NUMBER_OF_RANKS];
 
-            public void Init(int amount)
+            public override void Init(List<int> amount)
             {
-                this.amount = amount;
+                for (int i = 0; i > NUMBER_OF_RANKS; i++)
+                {
+                    this.amount[i] = amount[i];
+                }
             }
 
             public override void ActivateEffect(EnumLibrary.Ranks rank, List<GameObject> targets)
@@ -189,8 +222,9 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             {
                 foreach (GameObject target in targets)
                 {
+                    int temp = (int)rank;
                     if (target.GetComponent<Hand>().GetCardsInZone().Count == 0) continue;
-                    for(int i = 0; i < amount; i++)
+                    for(int i = 0; i < amount[temp]; i++)
                     {
                         var cardToDiscard = Random.Range(0, target.GetComponent<Hand>().GetCardsInZone().Count);
                         target.GetComponent<Hand>().Discard(target.GetComponent<Hand>().GetCardsInZone()[cardToDiscard]);

@@ -10,7 +10,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             Underworld,
             Order,
             Wild,
-            Neutral
+            Neutral,
+            None
         }
 
         public enum CardTypes
@@ -18,7 +19,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             Unit,
             Spell,
             Leader,
-            ManaStone
+            ManaStone,
+            Error
         }
 
         public enum CardSubtypes
@@ -26,14 +28,16 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
            Ritual,
            Scheme,
            Monster,
-           Hero
+           Hero,
+           None
         }
 
         public enum Ranks
         {
             Recruit,
             Veteran,
-            Elite
+            Elite,
+            Error
         }
 
         public enum Ressources
@@ -43,7 +47,8 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
             Card,
             Food,
             ArcaneKnowledge,
-            Loot
+            Loot,
+            Error
         }
 
         public enum Sources{
