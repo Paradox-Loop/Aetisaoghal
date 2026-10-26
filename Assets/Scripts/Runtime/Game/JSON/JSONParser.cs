@@ -1,4 +1,3 @@
-using Codice.Client.Common.GameUI;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -264,7 +263,7 @@ namespace Unity.Template.Multiplayer.NGO.Runtime
                 else if(jsonEffect.effectType == "Draw")
                 {
                     JsonDrawEffect jsonDrawEffect = JsonUtility.FromJson<JsonDrawEffect>(jsonEffect.data);
-                    effects.Add(scriptableFactory.CreateSimpleEffect("draw", readIntArray(jsonDrawEffect.amount));
+                    effects.Add(scriptableFactory.CreateSimpleEffect("draw", readIntArray(jsonDrawEffect.amount)));
                 }
                 else if(jsonEffect.effectType == "Discard")
                 {
