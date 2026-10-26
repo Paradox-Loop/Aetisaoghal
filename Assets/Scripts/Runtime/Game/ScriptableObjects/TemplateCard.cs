@@ -1,22 +1,20 @@
-using NUnit.Framework;
-using PlasticGui.WorkspaceWindow;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Unity.Template.Multiplayer.NGO.Runtime
 {
+    [CreateAssetMenu(fileName = "CardTemplate", menuName = "Template/Card")]
     public class TemplateCard : ScriptableObject
     {
-        private System.Collections.Generic.List<int> power;
-        private System.Collections.Generic.List<int> hp;
+        private List<int> power;
+        private List<int> hp;
         private string cardName { get; }
         private int cost { get; }
         private EnumLibrary.CardTypes cardType { get; }
         private EnumLibrary.CardSubtypes cardSubtype { get; }
         private EnumLibrary.Factions faction { get; }
         private List<Trigger> triggers { get; }
-
         private List<Effect> effects { get; }
 
         private Image art {  get; }
